@@ -1,0 +1,37 @@
+.rental-pricing-block {
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+}
+
+.rental-pricing-block h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rental-pricing-block p {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.pricing-option {
+    margin-bottom: 10px;
+}
+
+.pricing-option label {
+    font-size: 14px;
+}
+
+.book-now-button {
+    background-color: #00c853;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.book-now-button:hover {
+    background-color: #009624;
+}

@@ -44,7 +44,8 @@ const RentalBookingModule = (function () {
                 event.target.id === 'customBlockTimeValue' ||
                 event.target.name === 'dayBlockValue' ||
                 event.target.id === 'dayHourBlockValueDays' ||
-                event.target.id === 'dayHourBlockValueHours'
+                event.target.id === 'dayHourBlockValueHours' ||
+                event.target.id === 'dayBlockValue'
             ) {
                 updateCustomCostDisplay();
             }
@@ -164,7 +165,11 @@ const RentalBookingModule = (function () {
             alert('Please select a rental option.');
             return;
         }
-
+        const bookingButton = document.querySelector('.book-now-button');
+        if (bookingButton) {
+            bookingButton.disabled = true;
+            bookingButton.innerText = 'Processing...';
+        }
         const rentalStartDate = document.getElementById('rentalStartDate')?.value;
         const rentalStartTime = document.getElementById('rentalStartTime')?.value;
         const customBlockTimeValue = document.getElementById('customBlockTimeValue')?.value || 1;
@@ -226,7 +231,7 @@ const RentalBookingModule = (function () {
         };
 
         try {
-            const response = await fetch('/api/create-draft-order', {
+            const response = await fetch('https://colab.ngrok.app/api/create-draft-order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -244,6 +249,10 @@ const RentalBookingModule = (function () {
             }
         } catch (error) {
             console.error('Error creating draft order:', error);
+            if (bookingButton) {
+                bookingButton.disabled = false;
+                bookingButton.innerText = 'Book Now';
+            }
         }
     }
 

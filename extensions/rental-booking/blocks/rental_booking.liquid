@@ -6,7 +6,7 @@
 {% if rental_pricing %}
     <div class="rental-pricing-block">
         <h3>Pricing Explanation:</h3>
-        <span id="pricingScheme" style="display: none;">{{ rental_pricing.scheme_type }}</span>
+        <span data-v="1" id="pricingScheme" style="display: none;">{{ rental_pricing.scheme_type }}</span>
         <span id="scheme_id" style="display: none;">{{ rental_pricing.scheme_id }}</span>
         <span style="display: none;" class="rental-product-title" data-product-title="{{ product.title }}"></span>
         <span style="display: none;" class="rental-product-id" data-product-id="{{ product.id }}"></span>
@@ -166,7 +166,7 @@
 
 
 
-        <button type="button" class="book-now-button">Book Now</button>
+        <button type="button" style="background-color:{{ block.settings.colour }}" class="book-now-button">Book Now</button>
     </div>
 {% else %}
     <p style="display: none">No rental pricing available for this product.</p>
@@ -177,9 +177,10 @@
     "name": "Rental Booking Dev",
     "target": "section",
     "stylesheet": "app.css",
+    "javascript": "rental_booking_widget.js",
     "settings": [
         { "type": "product", "id": "product", "label": "product", "autofill": true },
-        { "type": "color", "id": "colour", "label": "Colour", "default": "#25D366" }
+        { "type": "color", "id": "colour", "label": "Colour", "default": "#000000" }
     ]
 }
 {% endschema %}

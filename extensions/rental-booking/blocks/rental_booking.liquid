@@ -6,6 +6,10 @@
 {% if rental_pricing %}
     <div class="rental-pricing-block">
         <h3>Pricing Explanation:</h3>
+        <span id="pricingScheme" style="display: none;">{{ rental_pricing.scheme_type }}</span>
+        <span id="scheme_id" style="display: none;">{{ rental_pricing.scheme_id }}</span>
+        <span style="display: none;" class="rental-product-title" data-product-title="{{ product.title }}"></span>
+        <span style="display: none;" class="rental-product-id" data-product-id="{{ product.id }}"></span>
 
         {% if rental_pricing.scheme_type == 'tieredRate' %}
             <p>The base rate for the first {{ rental_pricing.initial_period }} {{ rental_pricing.time_unit }}(s) is ${{ rental_pricing.initial_rate }}.</p>
@@ -14,17 +18,54 @@
             <form>
                 {% for i in (initial_period..upper_limit) %}
                     {% assign additional_units = i | minus: rental_pricing.initial_period %}
+                    {% assign additional_cost = rental_pricing.subsequent_rate | times: additional_units %}
                     <div class="pricing-option">
-                        <input type="radio" id="rental_{{ i }}" name="rental_duration" value="{{ i }}">
+                        <input type="radio"
+                               id="rental_{{ i }}"
+                               name="rental_option"
+                               value="{{ i }}"
+                               data-scheme="tieredRate"
+                               data-initial-period="{{ rental_pricing.initial_period }}"
+                               data-base-rate="{{ rental_pricing.initial_rate }}"
+                               data-subsequent-rate="{{ rental_pricing.subsequent_rate }}"
+                               data-time-unit="{{ rental_pricing.time_unit }}"
+
+                        >
                         <label for="rental_{{ i }}">
                             {{ i }} {{ rental_pricing.time_unit }}(s) - ${{ rental_pricing.initial_rate }}
                             {% if additional_units > 0 %}
-                                + ${{ rental_pricing.subsequent_rate | times: additional_units }} for {{ additional_units }} additional {{ rental_pricing.time_unit }}(s)
+                                + ${{ additional_cost }} for {{ additional_units }} additional {{ rental_pricing.time_unit }}(s)
                             {% endif %}
-                            = <span style="color: #00c853;">${{ rental_pricing.initial_rate | plus: rental_pricing.subsequent_rate | times: additional_units }}</span>
+                            = <span style="color: #00c853;">${{ rental_pricing.initial_rate | plus: additional_cost }}</span>
                         </label>
                     </div>
                 {% endfor %}
+                <div class="pricing-option">
+                    <input type="radio"
+                           id="rental_flat_custom"
+                           name="rental_option"
+                           value="custom"
+                           data-scheme="tieredRate"
+                           data-initial-period="{{ rental_pricing.initial_period }}"
+                           data-base-rate="{{ rental_pricing.initial_rate }}"
+                           data-subsequent-rate="{{ rental_pricing.subsequent_rate }}"
+                           data-time-unit="{{ rental_pricing.time_unit }}"
+                    >
+                    <label for="rental_flat_custom">Enter customer number of  {{ rental_pricing.time_unit }}s</label>
+                </div>
+                <div class="pricing-option">
+                    <input type="number" id="customBlockTimeValue" name="customBlockTimeValue" >
+                    <label for="rental_flat_custom">Number of  {{ rental_pricing.time_unit }}</label>
+                </div>
+
+                {% if rental_pricing.time_unit == 'day' %}
+                    <label for="rentalStartDate">Select Start Date:</label>
+                    <input type="date" id="rentalStartDate" name="start_date">
+                {% endif %}
+                {% if rental_pricing.time_unit == 'hour' %}
+                    <label for="rentalStartTime">Select Start Time:</label>
+                    <input type="time" id="rentalStartTime" name="start_date">
+                {% endif %}
             </form>
 
         {% elsif rental_pricing.scheme_type == 'flatRate' %}
@@ -36,41 +77,99 @@
                     {% assign period = rental_pricing.flat_rate_period | times: multiplier %}
                     {% assign cost = rental_pricing.flat_rate | times: multiplier %}
                     <div class="pricing-option">
-                        <input type="radio" id="rental_flat_{{ period }}" name="rental_duration" value="{{ period }}">
+                        <input type="radio"
+                               id="rental_flat_{{ period }}"
+                               name="rental_option"
+                               value="{{ period }}"
+                               data-scheme="flatRate"
+                               data-flat-rate-period="{{ rental_pricing.flat_rate_period }}"
+                               data-base-rate="{{ rental_pricing.flat_rate }}"
+                               data-flat-rate="{{ rental_pricing.flat_rate }}"
+                               data-time-unit="{{ rental_pricing.time_unit }}"
+                        >
                         <label for="rental_flat_{{ period }}">
                             {{ period }} {{ rental_pricing.time_unit }}(s) - Total cost: <span style="color: #00c853;">${{ cost }}</span>
                         </label>
                     </div>
                 {% endfor %}
                 <div class="pricing-option">
-                    <input type="radio" id="rental_flat_custom" name="rental_duration" value="custom">
-                    <label for="rental_flat_custom">Custom Block Time</label>
+                    <input
+                        type="radio" id="rental_flat_custom"
+                           name="rental_option"
+                           value="custom"
+                        data-scheme="flatRate"
+                        data-flat-rate-period="{{ rental_pricing.flat_rate_period }}"
+                        data-base-rate="{{ rental_pricing.flat_rate }}"
+                        data-flat-rate="{{ rental_pricing.flat_rate }}"
+                        data-time-unit="{{ rental_pricing.time_unit }}"
+                    >
+                    <label for="rental_flat_custom">Enter customer number of  {{ rental_pricing.time_unit }}s</label>
                 </div>
+                <div class="pricing-option">
+                    <input type="number" id="customBlockTimeValue"  step="{{ rental_pricing.flat_rate_period }}" name="customBlockTimeValue" >
+                    <label for="rental_flat_custom">Number of  {{ rental_pricing.time_unit }}</label>
+                </div>
+
+                {% if rental_pricing.time_unit == 'day' %}
+                    <label for="rentalStartDate">Select Start Date:</label>
+                    <input type="date" id="rentalStartDate" name="start_date">
+                {% endif %}
+                {% if rental_pricing.time_unit == 'hour' %}
+                    <label for="rentalStartTime">Select Start Time:</label>
+                    <input type="time" id="rentalStartTime" name="start_date">
+                {% endif %}
             </form>
 
         {% elsif rental_pricing.scheme_type == 'dailyRate' %}
             <p>The daily rate is ${{ rental_pricing.daily_rate }} per day.</p>
             <p>Each additional hour beyond a full day is charged at ${{ rental_pricing.hourly_overage_rate }} per hour.</p>
 
-            <form>
+            <div>
                 <div class="pricing-option">
-                    <input type="radio" id="rental_daily_full" name="rental_duration" value="fullday">
+                    <input type="radio"
+                           id="rental_daily_full"
+                           name="rental_option"
+                           value="fullday"
+                           data-scheme="dailyRate"
+                           data-daily-rate="{{ rental_pricing.daily_rate }}"
+                           data-hourly-overage-rate="{{ rental_pricing.hourly_overage_rate }}"
+
+                    >
                     <label for="rental_daily_full">Full Day Only - ${{ rental_pricing.daily_rate }} per day</label>
+                    <div id="dayBlockInput" style="display: none; margin-top: 10px; padding-left: 25px;">
+                        <input type="number" id="dayBlockValue" min="1" placeholder="Enter number of days" style="padding: 8px; width: 100px;">
+                    </div>
                 </div>
                 <div class="pricing-option">
-                    <input type="radio" id="rental_daily_hours" name="rental_duration" value="full_day_with_hours">
+                    <input type="radio"
+                           id="rental_daily_hours"
+                           name="rental_option"
+                           value="full_day_with_hours"
+                           data-scheme="dailyRate"
+                           data-daily-rate="{{ rental_pricing.daily_rate }}"
+                           data-hourly-overage-rate="{{ rental_pricing.hourly_overage_rate }}"
+                    >
                     <label for="rental_daily_hours">Full Day + Extra Hours</label>
                 </div>
-            </form>
+
+                <div id="dayHourBlockInput" style="display: none; margin-top: 10px; padding-left: 25px;">
+                    <input type="number" id="dayHourBlockValueDays" min="1" placeholder="Enter number of days" style="padding: 8px; width: 100px;">
+                    <input type="number" id="dayHourBlockValueHours" min="0" placeholder="Enter number of extra hours" style="padding: 8px; width: 100px; margin-top: 10px;">
+                </div>
+
+                <label for="start_date">Select Start Date:</label>
+                <input type="date" id="rentalStartDate" name="start_date">
+            </div>
         {% endif %}
+        <span id="finalrentalPriceunit"></span>
+        <p id="customExplanation" style="display: none; color: #555; margin-top: 10px;"></p>
 
-        <label for="start_date">Select Start Date:</label>
-        <input type="date" id="start_date" name="start_date">
 
-        <button type="submit" class="book-now-button">Book Now</button>
+
+        <button type="button" class="book-now-button">Book Now</button>
     </div>
 {% else %}
-    <p>No rental pricing available for this product.</p>
+    <p style="display: none">No rental pricing available for this product.</p>
 {% endif %}
 
 {% schema %}

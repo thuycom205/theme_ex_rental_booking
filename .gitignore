@@ -1,10 +1,4 @@
-/web/frontend/node_modules
-/web/public/hot
-/web/public/storage
-/web/storage/*.key
-/web/storage/db.sqlite
-/web/vendor
-/web/composer.lock
+/web/*
 .env
 .env.*
 !.env.example

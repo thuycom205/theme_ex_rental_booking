@@ -1,0 +1,222 @@
+{
+    "fetchUrl": "http://example.com/api/pricing_schemes/fetch",
+    "saveUrl": "http://example.com/api/pricing_schemes/save",
+    "fields": [
+        {
+            "name": "name",
+            "label": "Scheme Name",
+            "type": "text",
+            "validation": {
+                "required": true,
+                "type": "text"
+            }
+        },
+        {
+            "name": "scheme_type",
+            "label": "Scheme Type",
+            "type": "radio",
+            "validation": {
+                "required": true
+            },
+            "options": [
+                {"label": "Tiered Pricing", "value": "tieredRate"},
+                {"label": "Daily Rate with Hourly Overages", "value": "dailyRate"},
+                {"label": "Flat Rate for a Fixed Period", "value": "flatRate"}
+            ]
+        },
+        {
+            "name": "time_unit",
+            "label": "Time Unit",
+            "type": "select",
+            "validation": {
+                "required": true
+            },
+            "options": [
+            {"label": "Hour", "value": "hour"},
+            {"label": "Day", "value": "day"}
+
+        ],
+            "dependencies": {
+            "anyOf": [
+                {
+                    "field": "scheme_type",
+                    "value": "tieredRate"
+                }, {
+                    "field": "scheme_type",
+                    "value": "flatRate"
+                }
+            ]
+        }
+        },
+        {
+            "name": "initial_period",
+            "label": "Initial Period",
+            "type": "number",
+            "validation": {
+                "required": true
+            },
+            "dependencies": {
+                "anyOf": [
+                    {
+                        "field": "scheme_type",
+                        "value": "tieredRate"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "initial_rate",
+            "label": "Initial Rate",
+            "type": "number",
+            "validation": {
+                "required": true
+            },
+            "dependencies": {
+                "anyOf": [
+                    {
+                        "field": "scheme_type",
+                        "value": "tieredRate"
+                    }
+                ]
+            }        },
+        {
+            "name": "subsequent_rate",
+            "label": "Subsequent Rate",
+            "type": "number",
+            "validation": {
+                "required": true
+            },
+            "dependencies": {
+                "anyOf": [
+                    {
+                        "field": "scheme_type",
+                        "value": "tieredRate"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "daily_rate",
+            "label": "Daily Rate",
+            "type": "number",
+            "validation": {
+                "required": true
+            },
+            "dependencies": {
+                "anyOf": [
+                    {
+                        "field": "scheme_type",
+                        "value": "dailyRate"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "hourly_overage_rate",
+            "label": "Hourly Overage Rate",
+            "type": "number",
+            "validation": {
+                "required": true
+            },
+            "dependencies": {
+                "anyOf": [
+                    {
+                        "field": "scheme_type",
+                        "value": "dailyRate"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "flat_rate_period",
+            "label": "Flat Rate Period",
+            "type": "number",
+            "validation": {
+                "required": true
+            },
+            "dependencies": {
+                "anyOf": [
+                    {
+                        "field": "scheme_type",
+                        "value": "flatRate"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "flat_rate",
+            "label": "Flat Rate for a Fixed Period",
+            "type": "number",
+            "validation": {
+                "required": true
+            },
+            "dependencies": {
+                "anyOf": [
+                    {
+                        "field": "scheme_type",
+                        "value": "flatRate"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "editableTable",
+            "name": "product_pricing_scheme",
+            "label": "Rental Products",
+            "tooltip": "When customers view these products, it will show the bundle offer",
+
+            "allowMultiple": "yes",
+
+            "columns": [
+                {
+                    "name": "product_id",
+                    "label": "Product ID",
+                    "type": "number"
+                },
+                {
+                    "name": "product_handler",
+                    "label": "Product Handle",
+                    "type": "text"
+                },
+                {
+                    "name": "product_name",
+                    "label": "Product Name",
+                    "type": "text"
+                },
+                {
+                    "name": "product_img",
+                    "label": "Product image",
+                    "type": "thumbnail"
+                }
+            ],
+            "open": "Product"
+        }
+    ],
+    "actions": [
+        {
+            "type": "submit",
+            "label": "Save Pricing Scheme"
+        }
+    ],
+    "tree": {
+        "fields": [
+            {
+                "name": "scheme_type",
+                "label": "Scheme Type",
+                "type": "text",
+                "required": true
+            }
+
+        ],
+        "bulkActions": [
+            {
+                "label": "Delete",
+                "action": "delete"
+            },
+            {
+                "label": "Approve",
+                "action": "approve"
+            }
+        ]
+    }
+}

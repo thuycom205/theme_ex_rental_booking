@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="rental_order">
+    <column name="id" type="bigint" required="true" auto_increment="true" primary_key="true"/>
+    <column name="shop_name" type="varchar" length="255" required="true"/>
+    <column name="product_id" type="bigint" required="true"/>
+    <column name="pricing_scheme_id" type="bigint" required="true"/>
+    <column name="pricing_scheme_title" type="varchar" length="255" required="true"/>
+    <column name="pricing_scheme_detail" type="text" required="true"/>
+    <column name="customer_id" type="bigint" required="true"/>
+    <column name="rental_start_date" type="datetime" required="true"/>
+    <column name="rental_end_date" type="datetime" required="true"/>
+    <column name="rental_status" type="varchar" required="true" default="reserved" />
+    <column name="total_cost" type="decimal" precision="10" scale="2" required="true"/>
+    <column name="note" type="varchar" precision="10" scale="2" required="true"/>
+    <column name="rental_status" type="varchar" precision="10" scale="2" required="true"/>
+    <column name="time_unit" type="varchar" precision="10" scale="2" required="true"/>
+    <column name="created_at" type="timestamp" required="false"/>
+    <column name="updated_at" type="timestamp" required="false"/>
+</table>

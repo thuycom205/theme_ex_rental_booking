@@ -1,0 +1,36 @@
+{
+    "PricingSchemePage": {
+        "title": "Select a Pricing Scheme",
+        "choosePricingScheme": "Choose a Pricing Scheme",
+        "tieredHourlyPricing": "Tiered Hourly Pricing",
+        "dailyRateWithOverages": "Daily Rate with Hourly Overages",
+        "flatRateFixedPeriod": "Flat Rate for a Fixed Period",
+        "membershipSubscription": "Membership/Subscription Model",
+        "initialPeriod": "Initial Period (in hours)",
+        "initialRate": "Initial Rate",
+        "subsequentRate": "Subsequent Rate",
+        "dailyRate": "Daily Rate",
+        "hourlyOverageRate": "Hourly Overage Rate",
+        "flatRatePeriod": "Flat Rate Period (in hours)",
+        "flatRate": "Flat Rate",
+        "membershipFee": "Membership Fee",
+        "rentalLimit": "Rental Limit",
+        "submit": "Submit",
+        "next": "Next",
+        "saveAndNext": "Save Price Scheme and Next",
+        "timeUnit": "Time Unit",
+        "hours": "hours",
+        "days": "days",
+        "rentals": "rentals",
+        "delete": "Delete"
+
+    },
+    "HomePage": {
+        "title": "Home",
+        "heading": "Welcome to your new app",
+        "yourAppIsReadyToExplore": "Your app is ready to explore! Check out the following resources to learn more:",
+        "startPopulatingYourApp": "Start populating your app with content and features.",
+        "learnMore": "Learn more about building apps on Shopify:",
+        "trophyAltText": "A trophy representing achievement"
+    }
+}

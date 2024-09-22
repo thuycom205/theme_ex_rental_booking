@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Section with Bulma</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .top-banner {
+            background-color: #ffe4cc;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 1.5rem;
+        }
+
+        .navbar-brand .navbar-item {
+            padding: 0;
+        }
+
+        .navbar-menu {
+            flex-grow: 1;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-item.has-dropdown:hover .navbar-link {
+            border-bottom-color: transparent;
+        }
+
+        .search-bar-container {
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            max-width: 600px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            padding-left: 1rem;
+            width: 100%;
+        }
+
+        .search-bar input {
+            border: none;
+            box-shadow: none;
+            width: 100%;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background: #f36d25;
+            border: none;
+            border-radius: 50%;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-end {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-end .navbar-item {
+            padding: 0 1rem;
+        }
+
+        .navbar-end .icon {
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        /* Category dropdown button */
+        .navbar-categories {
+            padding-right: 2rem;
+        }
+
+        .navbar-categories .button {
+            background: transparent;
+            border: none;
+            padding: 0;
+            font-size: 1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .navbar-categories .icon {
+            margin-left: 0.5rem;
+        }
+
+        /* Horizontal menu below the navbar */
+        .horizontal-menu {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+
+        .horizontal-menu a {
+            margin: 0 1rem;
+            font-size: 1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .horizontal-menu a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        UP TO 60% OFF: Shop Early Autumn deals in the app! Terms apply.
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container is-fluid">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Etsy_logo.png" alt="Etsy" style="max-height: 2.5rem;">
+                </a>
+            </div>
+
+            <div class="navbar-menu">
+                <!-- Categories Dropdown -->
+                <div class="navbar-categories">
+                    <a class="button is-white" href="#">
+                        <span class="icon">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                        Categories
+                    </a>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="navbar-item search-bar-container">
+                    <div class="search-bar">
+                        <input class="input" type="text" placeholder="Search for anything">
+                        <button class="button">
+                            <span class="icon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Icons -->
+                <div class="navbar-end">
+                    <a class="navbar-item" href="#">Sign in</a>
+                    <a class="navbar-item" href="#"><i class="fas fa-heart icon"></i></a>
+                    <a class="navbar-item" href="#"><i class="fas fa-gift icon"></i></a>
+                    <a class="navbar-item" href="#"><i class="fas fa-shopping-cart icon"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Horizontal Menu -->
+    <div class="horizontal-menu">
+        <a href="#">Gift Mode</a>
+        <a href="#">Shop Birthday Gifts</a>
+        <a href="#">Home Favorites</a>
+        <a href="#">Fashion Finds</a>
+        <a href="#">Registry</a>
+    </div>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+</body>
+
+</html>

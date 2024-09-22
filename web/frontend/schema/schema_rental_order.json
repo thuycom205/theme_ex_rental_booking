@@ -1,0 +1,99 @@
+{
+    "fetchUrl": "http://example.com/api/rental_order/fetch",
+    "saveUrl": "http://example.com/api/rental_order/save",
+    "fields": [
+        {
+            "name": "note",
+            "label": "Note",
+            "type": "text",
+            "required": true
+        }
+
+    ],
+    "actions": [
+        {
+            "type": "submit",
+            "label": "Save Note"
+        }
+    ],
+    "tree": {
+        "fields": [
+            {
+                "name": "order_name",
+                "label": "Order Name",
+                "type": "text",
+                "required": false
+            },
+            {
+                "name": "product_name",
+                "label": "Product Name",
+                "type": "text",
+                "required": false
+            },
+
+            {
+                "name": "rental_start_date",
+                "label": "Rental Start Date",
+                "type": "datetime-local",
+                "required": true
+            },
+
+            {
+                "name": "number_of_day",
+                "label": "Number of day",
+                "type": "datetime-local",
+                "required": true
+            },
+
+            {
+                "name": "rental_status",
+                "label": "Rental Status",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "time_unit",
+                "label": "Time unit",
+                "type": "text",
+                "required": true
+            } ,
+            {
+                "name": "note",
+                "label": "Note",
+                "type": "text",
+                "required": true
+            }
+        ],
+        "filters": {
+            "rental_status": {
+                "label": "Rental Status",
+                "type": "select",
+                "options": [
+                    { "label": "All", "value": "all" },
+                    { "label": "Reserved", "value": "reserved" },
+                    { "label": "Rented", "value": "rented" },
+                    { "label": "Returned", "value": "returned" }
+                ]
+            },
+            "time_unit": {
+                "label": "Time Unit",
+                "type": "select",
+                "options": [
+                    { "label": "All", "value": "all" },
+                    { "label": "Hour", "value": "hour" },
+                    { "label": "Day", "value": "day" }
+                ]
+            }
+        },
+        "bulkActions": [
+            {
+                "label": "Delete",
+                "action": "delete"
+            },
+            {
+                "label": "Approve",
+                "action": "approve"
+            }
+        ]
+    }
+}

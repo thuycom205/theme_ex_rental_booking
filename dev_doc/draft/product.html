@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Product Page Carousel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .carousel-controls a {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-controls a:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .thumbnails img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .thumbnails img:hover, .thumbnails img.active {
+            border-color: #3273dc;
+        }
+
+        .product-info {
+            padding-left: 2rem;
+        }
+
+        .product-info h1.title {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: #363636;
+        }
+
+        .product-info h2.subtitle {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #7a7a7a;
+        }
+
+        .product-info .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-info .content {
+            margin-top: 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .product-info {
+                padding-left: 0;
+                padding-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <!-- Image Thumbnails -->
+            <div class="column is-2">
+                <div class="thumbnails">
+                    <img src="https://i.etsystatic.com/54383986/r/il/d8d69e/6270895765/il_794xN.6270895765_786x.jpg" alt="Thumbnail 1" onclick="showSlide(0)" class="active">
+                    <img src="https://i.etsystatic.com/54383986/r/il/2df344/6222850954/il_794xN.6222850954_msoi.jpg" alt="Thumbnail 2" onclick="showSlide(1)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/22ed1f/6222851898/il_794xN.6222851898_jrs4.jpg" alt="Thumbnail 3" onclick="showSlide(2)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/6d2222/6222852876/il_794xN.6222852876_tk8i.jpg" alt="Thumbnail 4" onclick="showSlide(3)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/370d9f/6222853518/il_794xN.6222853518_98cu.jpg" alt="Thumbnail 5" onclick="showSlide(4)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/aec72d/6270899653/il_794xN.6270899653_qh0l.jpg" alt="Thumbnail 6" onclick="showSlide(5)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/dfc553/6222854856/il_794xN.6222854856_33xp.jpg" alt="Thumbnail 7" onclick="showSlide(6)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/e36a4f/6270901315/il_794xN.6270901315_qwxh.jpg" alt="Thumbnail 8" onclick="showSlide(7)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/5b46b3/6222856764/il_794xN.6222856764_den6.jpg" alt="Thumbnail 9" onclick="showSlide(8)">
+                    <img src="https://i.etsystatic.com/54383986/r/il/454037/6270902915/il_794xN.6270902915_hsqo.jpg" alt="Thumbnail 10" onclick="showSlide(9)">
+                </div>
+            </div>
+
+            <!-- Main Image Carousel -->
+            <div class="column is-5">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/d8d69e/6270895765/il_794xN.6270895765_786x.jpg" alt="Main Image 1">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/2df344/6222850954/il_794xN.6222850954_msoi.jpg" alt="Main Image 2">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/22ed1f/6222851898/il_794xN.6222851898_jrs4.jpg" alt="Main Image 3">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/6d2222/6222852876/il_794xN.6222852876_tk8i.jpg" alt="Main Image 4">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/370d9f/6222853518/il_794xN.6222853518_98cu.jpg" alt="Main Image 5">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/aec72d/6270899653/il_794xN.6270899653_qh0l.jpg" alt="Main Image 6">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/dfc553/6222854856/il_794xN.6222854856_33xp.jpg" alt="Main Image 7">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/e36a4f/6270901315/il_794xN.6270901315_qwxh.jpg" alt="Main Image 8">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/5b46b3/6222856764/il_794xN.6222856764_den6.jpg" alt="Main Image 9">
+                        </figure>
+                        <figure class="image">
+                            <img src="https://i.etsystatic.com/54383986/r/il/454037/6270902915/il_794xN.6270902915_hsqo.jpg" alt="Main Image 10">
+                        </figure>
+                    </div>
+                    <div class="carousel-controls">
+                        <a href="#" onclick="prevSlide()">&#10094;</a>
+                        <a href="#" onclick="nextSlide()">&#10095;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="column is-5 product-info">
+                <h1 class="title is-4">My Dog Is My Boo Sweatshirt</h1>
+                <h2 class="subtitle is-6">Cartoon Golden Retrievers - Cozy Crewneck</h2>
+                <p class="price">776,943đ+ (Local taxes included)</p>
+                <p><strong>Returns & exchanges accepted</strong></p>
+
+                <div class="field">
+                    <label class="label">Colors</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select>
+                                <option>Select an option</option>
+                                <!-- Add color options here -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Sizes</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select>
+                                <option>Select an option</option>
+                                <!-- Add size options here -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="button is-primary is-fullwidth">Add to cart</button>
+                </div>
+
+                <div class="content">
+                    <h4 class="title is-6">Item Details</h4>
+                    <p><strong>Highlights:</strong></p>
+                    <ul>
+                        <li>Designed by ShopHalloweenDesigns</li>
+                    </ul>
+
+                    <h4 class="title is-6">About this item</h4>
+                    <p>Show off your love for Golden Retrievers with our ‘My Dog Is My Boo’ Crewneck Sweatshirt! This cozy sweatshirt features a charming cartoon design of four Golden Retrievers with the playful phrase ‘My Dog Is My Boo!’ Perfect for dog lovers and those who enjoy cute and cozy clothing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.carousel-inner .image');
+    const thumbnails = document.querySelectorAll('.thumbnails img');
+    showSlide(slideIndex);
+
+    function showSlide(index) {
+        slideIndex = index;
+        slides.forEach((slide, i) => {
+            slide.style.display = (i === slideIndex) ? 'block' : 'none';
+        });
+        thumbnails.forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === slideIndex);
+        });
+    }
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+    }
+</script>
+
+</body>
+</html>

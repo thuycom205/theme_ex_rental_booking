@@ -1,0 +1,303 @@
+{
+    "actions": [
+        {
+            "type": "approve",
+            "label": "Approve"
+        }
+    ],
+    "buttons": [
+        {
+            "name": "approve",
+            "label": "Approve",
+            "helpText": "Click this button to approve the commission rule submitted by KOLs.If it is not submitted by KOL  then it will be auto approved.",
+
+            "target": "/",
+            "actionType": "approve",
+            "enabled": true
+        }
+    ],
+    "fields": [
+        {
+            "name": "name",
+            "label": "Rule Name",
+            "type": "text",
+            "validation": {
+                "required": true,
+                "type": "text"
+            }
+        },
+        {
+            "name": "description",
+            "label": "Description",
+            "type": "text",
+            "validation": {
+                "required": true,
+                "type": "text"
+            }
+        },
+        {
+            "name": "start_date",
+            "label": "Start Date",
+            "type": "date",
+            "validation": {
+                "required": true,
+                "type": "date"
+            }
+        },
+        {
+            "name": "end_date",
+            "label": "End Date",
+            "type": "date",
+            "validation": {
+                "type": "date"
+            }
+        },
+
+        {
+            "name": "status",
+            "label": "Status",
+            "type": "select",
+            "tooltip": "Only active campaigns will be shown in the app.",
+
+            "options": [
+                {"label": "Active", "value": "active"},
+                {"label": "In active", "value": "inactive"}
+            ],
+            "required": true,
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "coupon_type",
+            "label": "Coupon Type",
+            "type": "select",
+            "tooltip": "Fixed amount will be resulted in fixed coupon amount for order.Percentage amount will be resulted in percentage coupon amount for order",
+
+            "options": [
+                {"label": "Fixed Amount", "value": "fixed_amount"},
+                {"label": "Percentage", "value": "percentage_amount"}
+            ],
+            "required": true,
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "fixed_amount",
+            "label": "Fixed Amount",
+            "type": "number",
+            "depend_by": "coupon_type",
+            "validation": {
+                "type": "number",
+                "required": true
+
+            }
+        },
+        {
+            "name": "percentage_amount",
+            "label": "Percentage Amount",
+            "type": "number",
+            "min": "0.0",
+            "max": "1.0",
+            "step": "0.01",
+            "depend_by": "coupon_type",
+            "tooltip": "Percentage amount will be resulted in percentage coupon amount for order and value should be between 0.0 to 1.0.",
+            "validation": {
+                "type": "number",
+                "required": true,
+                "min": "0.0",
+                "max": "1.0"
+            }
+        },
+        {
+            "name": "commission_type",
+            "label": "Commission type",
+            "type": "select",
+            "tooltip": "Fixed amount will be resulted in fixed coupon amount for order.Percentage amount will be resulted in percentage coupon amount for order",
+
+            "options": [
+                {"label": "Fixed", "value": "fixed_commission_rate"},
+                {"label": "Percentage", "value": "percentage_commission_rate"}
+            ],
+            "required": true,
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "commission_model",
+            "label": "Commission model",
+            "type": "select",
+            "tooltip": "Fixed amount will be resulted in fixed coupon amount for order.Percentage amount will be resulted in percentage coupon amount for order",
+
+            "options": [
+                {"label": "simple", "value": "simple"},
+                {"label": "Multi tier", "value": "multi_tier"}
+            ],
+            "required": true,
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "fixed_commission_rate",
+            "label": "Fixed commission rate",
+            "type": "number",
+            "validation": {
+                "type": "number",
+                "required": true
+
+            },
+            "dependencies": {
+                "allOf": [
+                    {
+                        "field": "commission_model",
+                        "value": "simple"
+                    },
+                    {
+                        "field": "commission_type",
+                        "value": "fixed_commission_rate"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "percentage_commission_rate",
+            "label": "Percentage Commission rate",
+            "type": "number",
+            "dependencies": {
+                "allOf": [
+                    {
+                        "field": "commission_model",
+                        "value": "simple"
+                    },
+                    {
+                        "field": "commission_type",
+                        "value": "percentage_commission_rate"
+                    }
+                ]
+            },
+            "validation": {
+                "type": "number",
+                "required": true
+
+            }
+        },
+        {
+            "type": "editableTable",
+            "name": "commission_tier",
+            "label": "Commission Tiers",
+            "dependencies": {
+                "allOf": [
+                    {
+                        "field": "commission_model",
+                        "value": "multi_tier"
+                    }
+
+                ]
+            },
+            "columns": [
+                {
+                    "name": "min_sales",
+                    "label": "Minimum Sales",
+                    "type": "number",
+                    "validation": {
+                        "type": "number",
+                        "required": true
+
+                    }
+                },
+                {
+                    "name": "max_sales",
+                    "label": "Maximum Sales",
+                    "type": "number",
+                    "validation": {
+                        "type": "number",
+                        "required": true
+
+                    }
+                },
+                {
+                    "name": "commission_rate",
+                    "label": "Commission Rate (%)",
+                    "type": "number",
+                    "validation": {
+                        "type": "number",
+                        "required": true
+
+                    }
+                }
+            ]
+        },
+        {
+            "type": "editableTable",
+            "name": "commission_rule_collection",
+            "label": "Commission Rule Collections",
+            "columns": [
+                {
+                    "name": "collection_id",
+                    "label": "Collection ID",
+                    "type": "number"
+                },
+                {
+                    "name": "product_handler",
+                    "label": "Collection Handle",
+                    "type": "text"
+                },
+                {
+                    "name": "product_name",
+                    "label": "Collection Name",
+                    "type": "text"
+                }
+            ],
+            "open": "Collection"
+        },
+        {
+            "type": "editableTable",
+            "name": "commission_rule_product",
+            "label": "Commission Rule Products",
+            "columns": [
+                {
+                    "name": "product_id",
+                    "label": "Product ID",
+                    "type": "number"
+                },
+                {
+                    "name": "product_handler",
+                    "label": "Product Handle",
+                    "type": "text"
+                },
+                {
+                    "name": "product_name",
+                    "label": "Product Name",
+                    "type": "text"
+                }
+            ],
+            "open": "Product"
+        },
+        {
+            "type": "mrelatedTable",
+            "name": "commission_rule_koc",
+            "label": "KOCs",
+            "relatedTableName": "kol",
+            "displayColumns": ["name", "country"]
+        }
+    ],
+    "tree": {
+        "fields": [
+            {
+                "name": "name",
+                "label": "Name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "status",
+                "label": "Status",
+                "type": "text"
+            }
+        ]
+
+    }
+}

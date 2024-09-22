@@ -1,0 +1,32 @@
+        git add    app/Http/Controllers/PricingSchemesController.php
+        git add    app/Http/Controllers/ProductPricingSchemeController.php
+        git add    app/Http/Controllers/RentalOrderController.php
+        git add    frontend/assets/rental_booking_widget.js
+        git add  app/Lib/Utils/
+         git add :   routes/api.php
+
+
+        git add    frontend/pages/index.jsx
+
+
+        m
+        git add    routes/web.php
+
+
+ (use "git restore --staged <file>..." to unstage)
+
+        modified:   app/Http/Controllers/PricingSchemesController.php
+        modified:   app/Http/Controllers/ProductPricingSchemeController.php
+        modified:   app/Http/Controllers/RentalOrderController.php
+        new file:   app/Lib/Utils/ShopifyMetafieldUtil.php
+                modified:   frontend/assets/rental_booking_widget.js
+
+                  git restore --staged   .env
+                        git restore --staged  .vscode/launch.json
+
+      q
+
+
+
+                git add    frontend/components/ListPage/ListPage.jsx
+

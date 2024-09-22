@@ -1,0 +1,29 @@
+{% if rental_pricing.scheme_type == 'tieredRate' %}
+    <p>The base rate for the first {{ rental_pricing.initial_period }} {{ rental_pricing.time_unit }}(s) is ${{ rental_pricing.initial_rate }}.</p>
+    <p>Each additional {{ rental_pricing.time_unit }} beyond the first {{ rental_pricing.initial_period }} {{ rental_pricing.time_unit }}(s) is charged at ${{ rental_pricing.subsequent_rate }} per {{ rental_pricing.time_unit }}.</p>
+
+    <form>
+        {% for i in (initial_period..upper_limit) %}
+            {% assign additional_units = i | minus: rental_pricing.initial_period %}
+            {% assign additional_cost = rental_pricing.subsequent_rate | times: additional_units %}
+            <div class="pricing-option">
+                <input type="radio" id="rental_{{ i }}" name="rental_option" value="{{ i }}">
+                <label for="rental_{{ i }}">
+                    {{ i }} {{ rental_pricing.time_unit }}(s) - ${{ rental_pricing.initial_rate }}
+                    {% if additional_units > 0 %}
+                        + ${{ additional_cost }} for {{ additional_units }} additional {{ rental_pricing.time_unit }}(s)
+                    {% endif %}
+                    = <span style="color: #00c853;">${{ rental_pricing.initial_rate | plus: additional_cost }}</span>
+                </label>
+            </div>
+        {% endfor %}
+        <div class="pricing-option">
+            <input type="radio" id="rental_flat_custom" name="rental_option" value="custom">
+            <label for="rental_flat_custom">Enter custom number of {{ rental_pricing.time_unit }}s</label>
+        </div>
+        <div class="pricing-option">
+            <input type="number" id="customBlockTimeValue" name="customBlockTimeValue">
+            <label for="rental_flat_custom">Number of {{ rental_pricing.time_unit }}</label>
+        </div>
+    </form>
+{% endif %}

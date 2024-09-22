@@ -1,0 +1,35 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "eba68c65e9f8e9b215f81af94c248494"
+name = "Rental booking"
+handle = "rental-booking-2"
+application_url = "https://xapp10.thexseed.com/index.php"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = false
+dev_store_url = "wapstoremuoiba.myshopify.com"
+include_config_on_deploy = true
+
+[access.admin]
+direct_api_mode = "online"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_customers,read_discounts,read_draft_orders,read_fulfillments,read_locations,read_orders,read_products,unauthenticated_read_checkouts,unauthenticated_read_metaobjects,unauthenticated_read_product_listings,unauthenticated_read_product_tags,unauthenticated_write_checkouts,write_discounts,write_draft_orders,write_fulfillments,write_orders,write_products"
+
+[auth]
+redirect_urls = [
+  "https://xapp10.thexseed.com/api/auth",
+  "https://xapp10.thexseed.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-07"
+
+  [[webhooks.subscriptions]]
+  uri = "https://xapp10.thexseed.com/api/webhooks"
+  compliance_topics = [ "customers/redact", "customers/data_request", "shop/redact" ]
+
+[pos]
+embedded = false

@@ -1,0 +1,28 @@
+name = "Rental booking dev"
+client_id = "87cb024e8f8b76225ad6c68c9611be87"
+application_url = "https://colab.ngrok.app/index.php/"
+embedded = true
+handle = "xseed-size-chart-1"
+
+[access_scopes]
+scopes = "read_products,write_products,read_metafields,write_metafields,read_discounts,write_discounts,read_orders,write_orders,read_draft_orders,write_draft_orders,read_locations,read_draft_orders,read_fulfillments,write_fulfillments,read_customers,unauthenticated_read_product_listings,unauthenticated_read_metaobjects,unauthenticated_read_product_tags,unauthenticated_read_checkouts,unauthenticated_write_checkouts"
+
+[access.admin]
+direct_api_mode = "online"
+
+[auth]
+redirect_urls = [
+  "https://colab.ngrok.app/api/auth",
+  "https://colab.ngrok.app/api/auth/callback",
+  "https://colab.ngrok.app/auth/shopify/callback",
+  "https://colab.ngrok.app/shopify/graphiql/auth/callback",
+]
+
+[webhooks]
+api_version = "2024-07"
+
+[pos]
+embedded = false
+
+[build]
+include_config_on_deploy = true

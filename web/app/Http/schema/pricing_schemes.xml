@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table name="pricing_schemes">
+    <column name="id" type="bigint" required="true" auto_increment="true" primary_key="true"/>
+    <column name="name" type="varchar" length="255" required="false"/>
+    <column name="scheme_type" type="varchar" length="50" required="true"/>
+    <column name="initial_period" type="int" required="false"/>
+    <column name="initial_rate" type="decimal" precision="10" scale="2" required="false"/>
+    <column name="subsequent_rate" type="decimal" precision="10" scale="2" required="false"/>
+    <column name="daily_rate" type="decimal" precision="10" scale="2" required="false"/>
+    <column name="hourly_overage_rate" type="decimal" precision="10" scale="2" required="false"/>
+    <column name="flat_rate_period" type="int" required="false"/>
+    <column name="flat_rate" type="decimal" precision="10" scale="2" required="false"/>
+    <column name="time_unit" type="varchar" length="50" required="false"/>
+    <column name="rental_limit" type="int" required="false"/>
+    <column name="membership_fee" type="decimal" precision="10" scale="2" required="false"/>
+    <column name="shop_name" type="varchar" length="255" required="true"/>
+    <column name="created_at" type="timestamp" required="false"/>
+    <column name="updated_at" type="timestamp" required="false"/>
+
+    <relatedTable name="product_pricing_scheme" foreignKey="pricing_scheme_id"  open="product">
+        <column name="id" type="bigint" required="true" auto_increment="true" primary_key="true"/>
+        <column name="product_id" type="bigint" required="true"/>
+        <column name="product_handler" type="varchar" length="255" required="true"/>
+        <column name="product_img" type="varchar" length="255" required="false"/>
+        <column name="pricing_scheme_id" type="bigint" required="true"/>
+        <column name="product_name" type="varchar" length="255" required="true"/>
+    </relatedTable>
+</table>

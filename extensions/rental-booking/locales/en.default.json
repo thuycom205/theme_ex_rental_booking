@@ -1,10 +1,9 @@
 {
-  "ratings": {
-    "stars": {
-      "label": "Ratings"
-    },
-    "home": {
-      "recommendationText": "Recommended Product!"
+    "general": {
+        "pricing_explanation_title": "Pricing Explanation:",
+        "select_start_date_text": "Select Start Date:",
+        "select_start_time_text": "Select Start Time:",
+        "book_now_button_text": "Book Now",
+        "no_rental_pricing_available": "No rental pricing available for this product."
     }
-  }
 }

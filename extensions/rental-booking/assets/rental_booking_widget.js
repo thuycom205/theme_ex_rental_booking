@@ -231,7 +231,7 @@ const RentalBookingModule = (function () {
         };
 
         try {
-            const response = await fetch('https://colab.ngrok.app/api/create-draft-order', {
+            const response = await fetch('https://xapp10.thexseed.com/api/create-draft-order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Passion Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            text-align: left;
+            padding: 50px;
+        }
+
+        .passion-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .passion-content {
+            max-width: 50%;
+        }
+
+        .passion-heading {
+            color: #a3c645;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .passion-title {
+            font-size: 48px;
+            color: #2c3842;
+            margin-bottom: 20px;
+        }
+
+        .passion-description {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .services-list li {
+            font-size: 16px;
+            color: #2c3842;
+            width: 50%;
+            margin-bottom: 10px;
+        }
+
+        .services-list li::before {
+            content: "•";
+            color: #e74c3c;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .learn-more-btn {
+            background-color: #a3c645;
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #8fb537;
+        }
+
+        .passion-images {
+            display: flex;
+            gap: 20px;
+        }
+
+        .passion-images img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .passion-images img.small {
+            width: 250px;
+            height: 250px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="passion-section">
+    <div class="passion-content">
+        <p class="passion-heading">What We Do</p>
+        <h2 class="passion-title">Taking Care of Pets is Our Passion</h2>
+        <p class="passion-description">
+            We believe that pets deserve quality care and love to make our four-legged clients happy. Come and enjoy the service!
+        </p>
+
+        <ul class="services-list">
+            <li>Health Care</li>
+            <li>Dog Walking</li>
+            <li>Vet Services</li>
+            <li>Pet Hotel</li>
+            <li>Quality Grooming</li>
+            <li>Premium Food</li>
+        </ul>
+
+        <a href="#" class="learn-more-btn">Learn More</a>
+    </div>
+
+    <div class="passion-images">
+        <img src="https://via.placeholder.com/300" alt="Pet with owner" class="large">
+        <img src="https://via.placeholder.com/250" alt="Happy dog" class="small">
+    </div>
+</div>
+
+</body>
+</html>

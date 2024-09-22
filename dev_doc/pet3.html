@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f7;
+            padding: 50px;
+            color: #2c3842;
+        }
+
+        .projects-section {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-heading {
+            color: #a3c645;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .projects-title {
+            font-size: 36px;
+            color: #2c3842;
+            margin-bottom: 40px;
+        }
+
+        .projects-list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .project-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-label {
+            display: inline-block;
+            background-color: #a3c645;
+            color: white;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .project-goal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            height: 10px;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .progress {
+            background-color: #ff6b6b;
+            border-radius: 5px;
+            height: 100%;
+            width: 50%; /* Adjust this dynamically */
+        }
+    </style>
+</head>
+<body>
+
+<div class="projects-section">
+    <p class="projects-heading">Make a Donation Now</p>
+    <h2 class="projects-title">Current Projects</h2>
+
+    <div class="projects-list">
+        <div class="project-item">
+            <img src="https://via.placeholder.com/400x200" alt="Help the Shelter">
+            <div class="project-content">
+                <span class="project-label">Rescue</span>
+                <h3 class="project-title">Help the Shelter</h3>
+                <p class="project-description">
+                    Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                </p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 40%;"></div> <!-- Dynamic Width -->
+                </div>
+                <div class="project-goal">
+                    <span>Raised: $7,650</span>
+                    <span>Goal: $20,000</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <img src="https://via.placeholder.com/400x200" alt="Animal Rescue League">
+            <div class="project-content">
+                <span class="project-label">Rescue</span>
+                <h3 class="project-title">Animal Rescue League</h3>
+                <p class="project-description">
+                    Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                </p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 20%;"></div> <!-- Dynamic Width -->
+                </div>
+                <div class="project-goal">
+                    <span>Raised: $4,300</span>
+                    <span>Goal: $20,000</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <img src="https://via.placeholder.com/400x200" alt="New Home for Dogs">
+            <div class="project-content">
+                <span class="project-label">Rescue</span>
+                <h3 class="project-title">New Home for Dogs</h3>
+                <p class="project-description">
+                    Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                </p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;"></div> <!-- Dynamic Width -->
+                </div>
+                <div class="project-goal">
+                    <span>Raised: $15,100</span>
+                    <span>Goal: $20,000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
